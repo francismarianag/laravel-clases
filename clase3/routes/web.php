@@ -17,3 +17,6 @@ Route::get('/', function () {
 
 Route::get('movies', 'MoviesController@index');  //tenemos un recurso que son movies y los indexamos con el metodo index
 
+Route::get('actors', 'ActorsController@index');
+Route::get('actors/{id}', 'ActorsController@show');
+Route::get('actors/buscar/{buscar}', 'ActorsController@buscar');
