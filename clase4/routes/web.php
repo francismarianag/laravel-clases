@@ -24,3 +24,9 @@ Route::post('genres/create', 'GenreController@store');
 
 Route::get('movies/create', 'MovieController@create');
 Route::post('movies/create', 'MovieController@store');
+
+//
+Route::get('movies/{id}/edit', 'MovieController@edit');
+Route::patch('movies/{id}/edit', 'MovieController@update');
+Route::get('genres/create', 'GenreController@create');
+Route::post('genres/create', 'GenreController@store');

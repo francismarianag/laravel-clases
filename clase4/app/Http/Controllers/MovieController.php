@@ -27,7 +27,8 @@ class MovieController extends Controller
      */
     public function create()
     {
-        return view('createmovie');        
+        $generos = Genre::all();
+        return view('createmovie')->with('generos', $generos);        
     }
 
     /**
@@ -60,8 +61,8 @@ class MovieController extends Controller
             'genre_id'=> $request->input('genre_id'),
             'awards'=> $request->input('awards'),
             'rating'=> $request->input('rating'),
-            'genre_id'=> $request->input('genre_id'),
-
+            'length' => $request->input('length'),
+            'release_date' => $request->input('release_date')
 
         ]);
 
@@ -90,7 +91,9 @@ class MovieController extends Controller
      */
     public function edit($id)
     {
-        //
+        $movie = Movie::find($id);
+        $generos = Genre::all();
+        return view('movies.edit')->with('movie', $movie)->with('generos', $generos);
     }
 
     /**
@@ -102,7 +105,14 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $movie = Movie::find($id);
+        $movie->title = $request->input('title');
+        $movie->genre_id = $request->input('genre_id');
+        $movie->awards = $request->input('awards');
+        $movie->rating = $request->input('rating');
+        $movie->length = $request->input('length');
+        $movie->release_date = $request->input('release_date');
+        $movie->save();
     }
 
     /**

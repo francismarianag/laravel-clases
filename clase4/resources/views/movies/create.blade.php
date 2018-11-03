@@ -18,14 +18,13 @@
             <label for="titulo">Titulo</label>
     <input type="text" name="title" value="{{old('title')}}"/>
         </div>
-        <div>
-                <label for="genre_id">Genero</label>
-                <select name="genre_id" id="">
-                    @foreach ($genres as $genre)
-                <option value="{{$genre->id}}">{{$genre->name}}</option>
-                    @eendforeach
-                </select>
-            </div>
+        <div class="form-control">
+            <select name="genre_id" value="{{ old('genre_id') }}">
+                @foreach($generos as $genero)
+                <option value="{{ $genero->id }}">{{ $genero->name }}</option>
+                @endforeach
+            </select>
+        </div>
         <div>
             <label for="rating">Rating</label>
             <input type="text" name="rating" value="{{old('rating')}}"/>
@@ -38,10 +37,14 @@
             <label for="duracion">Duracion</label>
             <input type="text" name="length" value="{{old('length')}}"/>
         </div>
-        <div>
+        <div class="form-group">
+            <label>Fecha de Estreno</label>
+            <input class="form-control" type="date" name="release_date" value="{{ old('release_date') }}">
+        </div>
+        {{-- <div>
                 <label>Fecha de Estreno</label>
                 <input type="date" name="release_date">
-                {{-- <select name="dia">
+                <select name="dia">
                     <option value="">Dia</option>
                     @for ($i=1; $i < 32; $i++)
                         @if($i == old('dia'))
@@ -70,8 +73,8 @@
                             <option value="{{$i}}">{{$i}}</option>
                         @endif
                     @endfor
-                </select> --}}
-            </div>
+                </select>
+            </div> --}}
         <input type="submit" value="Agregar Pelicula" name="submit"/>
 </form>
 
